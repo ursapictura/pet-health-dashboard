@@ -1,22 +1,34 @@
-// import { Button } from 'react-bootstrap'; // TODO: COMMENT IN FOR AUTH
 // import { signOut } from '../utils/auth'; // TODO: COMMENT IN FOR AUTH
-import { useAuth } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
+import { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import Link from 'next/link';
+import { useAuth } from '../utils/context/authContext';
+import { getAllPets } from '../api/petData';
+import PetCard from '../components/PetCard';
 
 function Home() {
-  const { user } = useAuth(); // TODO: COMMENT IN FOR AUTH
+  const [pets, setPets] = useState([]);
+  const { user } = useAuth();
 
-  // const user = { displayName: 'Dr. T' }; // TODO: COMMENT OUT FOR AUTH
+  const getAllThePets = () => {
+    getAllPets(user.uid).then(setPets);
+    console.warn(user.uid);
+  };
+
+  useEffect(() => {
+    getAllThePets();
+  }, []);
+
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
+    <div>
+      <Link href="/pet/new" passHref>
+        <Button>Add A Pet</Button>
+      </Link>
+      <div className="d-flex flex-wrap">
+        {pets.map((pet) => (
+          <PetCard key={pet.firebaseKey} petObj={pet} onUpdate={getAllThePets} />
+        ))}
+      </div>
     </div>
   );
 }
