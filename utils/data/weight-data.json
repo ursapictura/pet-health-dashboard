@@ -1,0 +1,64 @@
+{
+  "-NyByzXMsZkUWtgEZ-jG": {
+    "firebaseKey": "-NyByzXMsZkUWtgEZ-jG",
+    "petId": "-NyByE10NtuTlg8a3faj",
+    "weight": "8",
+    "date": "2023-10-07T23:12:07Z"
+  },
+  "-NyByzXMsZkUWtgEZ-jH": {
+    "firebaseKey": "-NyByzXMsZkUWtgEZ-jH",
+    "petId": "-NyByE10NtuTlg8a3faj",
+    "weight": "8.5",
+    "date": "2024-03-20T09:32:18Z"
+  },
+  "-NyByzXNoUTCkGovmAFk": {
+    "firebaseKey":  "-NyByzXNoUTCkGovmAFk",
+    "petId": "-NyByE10NtuTlg8a3faj",
+    "weight": "7.6",
+    "date": "2023-06-14T19:40:11Z"
+  },
+  "-NyByzXOgRtYE5hrwKqm": {
+    "firebaseKey": "-NyByzXOgRtYE5hrwKqm",
+    "petId": "-NyByE10NtuTlg8a3faj",
+    "weight": "8.9",
+    "date": "2024-03-09T06:41:06Z"
+  },
+  "-NyByzXOgRtYE5hrwKqn": {
+    "firebaseKey": "-NyByzXOgRtYE5hrwKqn",
+    "petId": "-NyByE12MTacC8OmB9vy",
+    "weight": "25",
+    "date": "2024-04-29T03:20:58Z"
+  },
+  "-NyByzXP5WNVm4IdS5pg": {
+    "firebaseKey": "-NyByzXP5WNVm4IdS5pg",
+    "petId": "-NyByE12MTacC8OmB9vy",
+    "weight": "27",
+    "date": "2023-12-13T06:19:35Z"
+  },
+  "-NyByzXP5WNVm4IdS5ph": {
+    "firebaseKey": "-NyByzXP5WNVm4IdS5ph",
+    "petId": "-NyByE12MTacC8OmB9vy",
+    "weight": "25.5",
+    "date": "2023-10-07T18:29:22Z"
+  },
+
+  "-NyByE13INllBMG6_ERS": {
+    "firebaseKey": "-NyByE13INllBMG6_ERS",
+    "petId": "-NyByE12MTacC8OmB9vy",
+    "weight": "50",
+    "date": "2024-02-20T01:36:21Z"
+  },
+
+  "-NyByzXR7ICTLZwzyDBi": {
+    "firebaseKey": "-NyByzXR7ICTLZwzyDBi",
+    "petId": "-NyByE12MTacC8OmB9vy",
+    "weight": "54",
+    "date": "2024-04-01T09:13:13Z"
+  },
+  "-NyByzXR7ICTLZwzyDBj": {
+    "firebaseKey": "-NyByzXR7ICTLZwzyDBj",
+    "petId": "-NyByE12MTacC8OmB9vy",
+    "weight": "52",
+    "date": "2023-09-09T08:27:18Z"
+  }
+}

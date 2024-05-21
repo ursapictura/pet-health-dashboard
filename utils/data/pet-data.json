@@ -1,0 +1,44 @@
+{
+  "-NyByE10NtuTlg8a3faj": {
+    "uid": "e11axy3qYIhStQ4Or7MKAbVAvbk1",
+    "firebaseKey": "-NyByE10NtuTlg8a3faj",
+    "name": "Terra",
+    "species": "cat",
+    "breed": "Domestic Shorthair",
+    "appearance": "Tortoise Shell polydactyl",
+    "gender": "Female",
+    "fixed": true,
+    "microchip": "3404138252",
+    "birthday": "6/28/2007",
+    "insurance": "Pets Best",
+    "image": "http://dummyimage.com/216x100.png/5fa2dd/ffffff"
+  },
+  "-NyByE12MTacC8OmB9vy": {
+    "uid": "e11axy3qYIhStQ4Or7MKAbVAvbk1",
+    "firebaseKey": "-NyByE12MTacC8OmB9vy",
+    "name": "Nessi",
+    "species": "dog",
+    "breed": "Golden Retriever",
+    "appearance": "Golden shaggy hair",
+    "gender": "Female",
+    "fixed": true,
+    "microchip": "5810073867",
+    "birthday": "10/26/2015",
+    "insurance": "Lemonade",
+    "image": "http://dummyimage.com/194x100.png/cc0000/ffffff"
+  },
+  "-NyByE13INllBMG6_ERS": {
+    "uid": "e11axy3qYIhStQ4Or7MKAbVAvbk1",
+    "firebaseKey": "-NyByE13INllBMG6_ERS",
+    "name": "Duke",
+    "species": "dog",
+    "breed": "English Bulldog",
+    "appearance": "Brindled brown",
+    "gender": "Female",
+    "fixed": true,
+    "microchip": "0128757019",
+    "birthday": "7/6/2018",
+    "insurance": "PetMed",
+    "image": "http://dummyimage.com/210x100.png/cc0000/ffffff"
+  }
+}
