@@ -45,7 +45,7 @@ PetCard.propTypes = {
     firebaseKey: PropTypes.string,
     appearance: PropTypes.string,
     insurance: PropTypes.string,
-    birthday: PropTypes.instanceOf(Date),
+    birthday: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

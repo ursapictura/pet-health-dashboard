@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 const getAllPets = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/pet.json?orderBy="uid"&uid="${uid}"`, {
+  fetch(`${endpoint}/pet.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
