@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { getAllPets } from '../api/petData';
 import PetCard from '../components/PetCard';
-import WeightChart from '../components/WeightChart';
 
 function Home() {
   const [pets, setPets] = useState([]);
@@ -30,7 +29,6 @@ function Home() {
           <PetCard key={pet.firebaseKey} petObj={pet} onUpdate={getAllThePets} />
         ))}
       </div>
-      <WeightChart petId="-NyByE10NtuTlg8a3faj" />
     </div>
   );
 }

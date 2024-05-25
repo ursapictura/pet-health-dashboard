@@ -15,11 +15,20 @@ export default function WeightChart({ petId }) {
   }, []);
 
   const renderChart = () => {
-    const dates = weights.map((date) => new Date(date).toLocaleDateString());
-    console.warn(dates);
-    const weightData = weights.map((obj) => obj.weight);
     console.warn(weights);
-    console.warn(weightData[0]);
+    const sortByDate = weights.sort((a, b) => parseInt(b.date, 10) - parseInt(a.date, 10)).reverse();
+    console.warn(sortByDate);
+    const weightNum = sortByDate.map((weight) => parseInt(weight.date, 10));
+    console.warn(weightNum);
+    const weightData = sortByDate.map((obj) => obj.weight);
+    console.warn(weightData);
+
+    const formattedDates = weightNum.map((timestamp) => {
+      const date = new Date(timestamp);
+      return date.toLocaleDateString(); // Adjust format as needed
+    });
+
+    console.warn(formattedDates);
 
     const ctx = document.getElementById('myChart');
 
@@ -28,7 +37,7 @@ export default function WeightChart({ petId }) {
       new Chart(ctx, {
         type: 'line',
         data: {
-          labels: dates,
+          labels: formattedDates,
           datasets: [{
             label: 'Weight',
             data: weightData,

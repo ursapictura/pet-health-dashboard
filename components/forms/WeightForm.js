@@ -55,7 +55,7 @@ function WeightForm({ obj }) {
   );
 }
 WeightForm.propTypes = {
-  obj: PropTypes.shape({}),
+  obj: PropTypes.string,
 };
 
 WeightForm.defaultProps = {
