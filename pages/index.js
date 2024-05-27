@@ -12,7 +12,6 @@ function Home() {
 
   const getAllThePets = () => {
     getAllPets(user.uid).then(setPets);
-    console.warn(user.uid);
   };
 
   useEffect(() => {
@@ -26,7 +25,7 @@ function Home() {
       </Link>
       <div className="d-flex flex-wrap">
         {pets.map((pet) => (
-          <PetCard key={pet.firebaseKey} petObj={pet} onUpdate={getAllThePets} />
+          <PetCard key={pet.firebaseKey} petObj={pet} onUpdate={getAllThePets} location="index" />
         ))}
       </div>
     </div>

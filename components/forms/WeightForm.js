@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+// import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { createWeight, updateWeight } from '../../api/weightData';
+import { createWeight, updateWeight, getAllWeights } from '../../api/weightData';
 
 const initialState = {
   weight: '',
 };
-
-function WeightForm({ obj }) {
+// eslint-disable-next-line
+function WeightForm({ obj, setWeights }) {
   const [formInput, setFormInput] = useState(initialState);
-  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,20 +20,25 @@ function WeightForm({ obj }) {
       [name]: value,
     }));
   };
+  const getAllPetWeights = () => {
+    getAllWeights(obj).then((array) => setWeights(array));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = { ...formInput, petId: obj, date: Date.now() };
     createWeight(payload).then(({ name }) => {
       const patchPayload = { firebaseKey: name };
-      updateWeight(patchPayload).then(() => {
-        router.push(`/pet/${obj}`);
-      });
+      updateWeight(patchPayload).then(getAllPetWeights);
     });
   };
 
+  useEffect(() => {
+    getAllPetWeights();
+  }, []);
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} display="inline">
       <h2 className="text-white mt-5">Add Weight</h2>
 
       {/* PET NAME INPUT  */}
