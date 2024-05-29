@@ -156,7 +156,7 @@ function PetForm({ obj }) {
 
       {/* PET FIXED BOOLEAN */}
       <Form.Check
-        className="text-white mb-3"
+        className="mb-3"
         type="switch"
         id="fixed"
         name="fixed"

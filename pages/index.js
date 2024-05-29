@@ -19,9 +19,9 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="home">
       <Link href="/pet/new" passHref>
-        <Button>Add A Pet</Button>
+        <Button style={{ display: 'block', margin: '10px auto' }}>Add A Pet</Button>
       </Link>
       <div className="d-flex flex-wrap">
         {pets.map((pet) => (

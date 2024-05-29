@@ -25,6 +25,30 @@ export default function WeightChart({ weights }) {
         const date = new Date(timestamp);
         return date.toLocaleDateString();
       });
+      console.warn(formattedDates);
+      console.warn(weightNum);
+      const weightNumDates = weightNum.map((timestamp) => {
+        const date = new Date(timestamp);
+        return date;
+      });
+
+      // Returns an array of dates between the two dates
+      const getDatesBetween = (startDate, endDate) => {
+        const dates = [];
+        const dateFormat = new Intl.DateTimeFormat('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
+
+        const currentDate = new Date(startDate);
+
+        while (currentDate <= endDate) {
+          dates.push(dateFormat.format(currentDate));
+
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+
+        return dates;
+      };
+
+      // console.warn(getDatesBetween(weightNumDates[0], weightNumDates[weightNumDates.length - 1]));
 
       if (chartRef.current.chartInstance) {
         // If chart instance exists, update its data
@@ -37,7 +61,7 @@ export default function WeightChart({ weights }) {
         chartRef.current.chartInstance = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: formattedDates,
+            labels: getDatesBetween(weightNumDates[0], weightNumDates[weightNumDates.length - 1]),
             datasets: [{
               label: 'Weight',
               data: weightData,

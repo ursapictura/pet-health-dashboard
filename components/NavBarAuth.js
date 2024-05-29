@@ -8,7 +8,7 @@ import { signOut } from '../utils/auth';
 
 export default function NavBarAuth() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <nav className="navbar navbar-custom">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>Pet Companion</Navbar.Brand>
@@ -24,6 +24,6 @@ export default function NavBarAuth() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+    </nav>
   );
 }

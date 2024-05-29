@@ -31,6 +31,7 @@ function WeightForm({ obj, setWeights }) {
       const patchPayload = { firebaseKey: name };
       updateWeight(patchPayload).then(getAllPetWeights);
     });
+    setFormInput(initialState);
   };
 
   useEffect(() => {
@@ -38,8 +39,8 @@ function WeightForm({ obj, setWeights }) {
   }, []);
 
   return (
-    <Form onSubmit={handleSubmit} display="inline">
-      <h2 className="text-white mt-5">Add Weight</h2>
+    <Form onSubmit={handleSubmit}>
+      <h2 className="mt-5">Add Weight</h2>
 
       {/* PET NAME INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Pet Weight" className="mb-3">
