@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { PropTypes } from 'prop-types';
 import { deletePet } from '../api/petData';
 
-export default function PetCard({ petObj, onUpdate }) {
+export default function PetCard({ petObj, onUpdate, location }) {
   const removeThisPet = () => {
     if (window.confirm(`Remove ${petObj.name} from app?`)) {
       deletePet(petObj.firebaseKey).then(() => onUpdate());
@@ -11,7 +11,7 @@ export default function PetCard({ petObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card border="success" style={{ width: '18rem', margin: '10px' }}>
       <Card.Img variant="top" src={petObj.image} alt={petObj.name} />
       <Card.Body>
         <Card.Title>{petObj.name}</Card.Title>
@@ -21,9 +21,13 @@ export default function PetCard({ petObj, onUpdate }) {
         <h5>Insurance: {petObj.insurance}</h5>
         <h5>{petObj.appearance}</h5>
         {/* DYNAMIC LINK TO VIEW THE PET DASHBOARD  */}
-        <Link href={`/pet/${petObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
-        </Link>
+        {location === 'index'
+          ? (
+            <Link href={`/pet/${petObj.firebaseKey}`} passHref>
+              <Button variant="primary" className="m-2">VIEW</Button>
+            </Link>
+          )
+          : '' }
         {/* DYNAMIC LINK TO EDIT THE PET DETAILS  */}
         <Link href={`/pet/edit/${petObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
@@ -45,7 +49,8 @@ PetCard.propTypes = {
     firebaseKey: PropTypes.string,
     appearance: PropTypes.string,
     insurance: PropTypes.string,
-    birthday: PropTypes.instanceOf(Date),
+    birthday: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
+  location: PropTypes.string.isRequired,
 };

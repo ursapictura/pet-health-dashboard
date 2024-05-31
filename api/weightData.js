@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 const getAllWeights = (petId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight.json?orderBy="petId"&petId="${petId}"`, {
+  fetch(`${endpoint}/weight.json?orderBy="petId"&equalTo="${petId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const createWeight = (payload) => new Promise((resolve, reject) => {
 });
 
 const updateWeight = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/pet/${payload.firebaseKey}.json`, {
+  fetch(`${endpoint}/weight/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
