@@ -23,7 +23,7 @@ function Home() {
       <Link href="/pet/new" passHref>
         <Button style={{ display: 'block', margin: '10px auto' }}>Add A Pet</Button>
       </Link>
-      <div className="d-flex flex-wrap">
+      <div className="card-container">
         {pets.map((pet) => (
           <PetCard key={pet.firebaseKey} petObj={pet} onUpdate={getAllThePets} location="index" />
         ))}
