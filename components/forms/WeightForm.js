@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
 import { createWeight, updateWeight, getAllWeights } from '../../api/weightData';
 
 const initialState = {
@@ -39,8 +38,7 @@ function WeightForm({ obj, setWeights }) {
   }, []);
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <h2 className="mt-5">Add Weight</h2>
+    <Form className="weight-form" onSubmit={handleSubmit}>
 
       {/* PET NAME INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Pet Weight" className="mb-3">
@@ -55,7 +53,7 @@ function WeightForm({ obj, setWeights }) {
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">Add Weight</Button>
+      <button type="submit" className="btn btn-outline btn-primary">Add Weight</button>
     </Form>
   );
 }

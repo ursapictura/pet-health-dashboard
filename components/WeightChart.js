@@ -25,28 +25,28 @@ export default function WeightChart({ weights }) {
         const date = new Date(timestamp);
         return date.toLocaleDateString();
       });
-      console.warn(formattedDates);
-      console.warn(weightNum);
-      const weightNumDates = weightNum.map((timestamp) => {
-        const date = new Date(timestamp);
-        return date;
-      });
+      // console.warn(formattedDates);
+      // console.warn(weightNum);
+      // const weightNumDates = weightNum.map((timestamp) => {
+      //   const date = new Date(timestamp);
+      //   return date;
+      // });
 
       // Returns an array of dates between the two dates
-      const getDatesBetween = (startDate, endDate) => {
-        const dates = [];
-        const dateFormat = new Intl.DateTimeFormat('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
+      // const getDatesBetween = (startDate, endDate) => {
+      //   const dates = [];
+      //   const dateFormat = new Intl.DateTimeFormat('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
 
-        const currentDate = new Date(startDate);
+      //   const currentDate = new Date(startDate);
 
-        while (currentDate <= endDate) {
-          dates.push(dateFormat.format(currentDate));
+      //   while (currentDate <= endDate) {
+      //     dates.push(dateFormat.format(currentDate));
 
-          currentDate.setDate(currentDate.getDate() + 1);
-        }
+      //     currentDate.setDate(currentDate.getDate() + 1);
+      //   }
 
-        return dates;
-      };
+      //   return dates;
+      // };
 
       // console.warn(getDatesBetween(weightNumDates[0], weightNumDates[weightNumDates.length - 1]));
 
@@ -61,12 +61,12 @@ export default function WeightChart({ weights }) {
         chartRef.current.chartInstance = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: getDatesBetween(weightNumDates[0], weightNumDates[weightNumDates.length - 1]),
+            labels: formattedDates,
             datasets: [{
               label: 'Weight',
               data: weightData,
               fill: false,
-              borderColor: 'rgba(0, 0, 0, 1)',
+              borderColor: 'rgb(75, 192, 192)',
               borderWidth: 2,
             }],
           },
@@ -84,7 +84,7 @@ export default function WeightChart({ weights }) {
   }, [weights]);
 
   return (
-    <div>
+    <div className="chart-container">
       {weights.length > 0 ? (
         <canvas ref={chartRef} id="myChart" />
       ) : (

@@ -104,6 +104,10 @@ function PetForm({ obj }) {
           <option value="">Select Pet Species</option>
           <option value="cat">Cat</option>
           <option value="dog">Dog</option>
+          <option value="rabbit">Rabbit</option>
+          <option value="ferret">Ferret</option>
+          <option value="rodent">Rodent</option>
+          <option value="snake">Snake</option>
         </Form.Select>
       </FloatingLabel>
 
