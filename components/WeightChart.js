@@ -66,7 +66,7 @@ export default function WeightChart({ weights }) {
               label: 'Weight',
               data: weightData,
               fill: false,
-              borderColor: 'rgba(0, 0, 0, 1)',
+              borderColor: 'rgb(75, 192, 192)',
               borderWidth: 2,
             }],
           },
@@ -84,7 +84,7 @@ export default function WeightChart({ weights }) {
   }, [weights]);
 
   return (
-    <div>
+    <div className="chart-container">
       {weights.length > 0 ? (
         <canvas ref={chartRef} id="myChart" />
       ) : (

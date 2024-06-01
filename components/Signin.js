@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import { signIn } from '../utils/auth';
 
 function Signin() {
@@ -7,17 +7,18 @@ function Signin() {
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
       style={{
-        height: '90vh',
+        height: '100vh',
         padding: '30px',
         maxWidth: '400px',
         margin: '0 auto',
       }}
     >
-      <h1>Hi there!</h1>
+      <img src="/logo.png" alt="logo" />
+      <h1>Welcome to Pet Companion!</h1>
       <p>Click the button below to login!</p>
-      <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
+      <button type="submit" className="btn btn-outline btn-primary sign-in" onClick={signIn}>
         Sign In
-      </Button>
+      </button>
     </div>
   );
 }

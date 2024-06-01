@@ -1,7 +1,6 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 // import { signOut } from '../utils/auth'; // TODO: COMMENT IN FOR AUTH
 import { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { getAllPets } from '../api/petData';
 import PetCard from '../components/PetCard';
@@ -20,9 +19,17 @@ function Home() {
 
   return (
     <div className="home">
-      <Link href="/pet/new" passHref>
-        <Button style={{ display: 'block', margin: '10px auto' }}>Add A Pet</Button>
-      </Link>
+      <a
+        href="/pet/new"
+        style={{
+          display: 'block',
+          width: '125px',
+          margin: 'auto',
+          textAlign: 'center',
+        }}
+      >
+        <button type="submit" className="btn btn-primary">Add A Pet</button>
+      </a>
       <div className="card-container">
         {pets.map((pet) => (
           <PetCard key={pet.firebaseKey} petObj={pet} onUpdate={getAllThePets} location="index" />
