@@ -11,7 +11,7 @@ module.exports = {
     extend: {},
   },
   daisyui: {
-    themes: ['light', 'dark', 'emerald'],
+    themes: ['emerald'],
   },
   plugins: [
     require('daisyui'),  // eslint-disable-line

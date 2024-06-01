@@ -14,8 +14,7 @@ function Signin() {
       }}
     >
       <img src="/logo.png" alt="logo" />
-      <h1>Welcome to Pet Companion!</h1>
-      <p>Click the button below to login!</p>
+
       <button type="submit" className="btn btn-outline btn-primary sign-in" onClick={signIn}>
         Sign In
       </button>
