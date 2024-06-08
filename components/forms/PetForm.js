@@ -138,7 +138,7 @@ function PetForm({ obj }) {
       {/* PET BIRTHDAY INPUT  */}
       <FloatingLabel controlId="floatingInput5" label="Pet Birthday" className="mb-3">
         <Form.Control
-          type="text"
+          type="date"
           placeholder="Pet's estimated birth date"
           name="birthday"
           value={formInput.birthday}
@@ -189,7 +189,7 @@ PetForm.propTypes = {
     species: PropTypes.string,
     appearance: PropTypes.string,
     mircohip: PropTypes.string,
-    birthday: PropTypes.string,
+    birthday: PropTypes.instanceOf(Date),
     incurance: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
