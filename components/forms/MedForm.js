@@ -11,7 +11,7 @@ const initialState = {
   name: '',
 };
 
-function MedForm({ obj }) {
+function MedForm({ petId, obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
@@ -33,11 +33,11 @@ function MedForm({ obj }) {
     if (obj.firebaseKey) {
       updateMed(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, petId };
       createMed(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateMed(patchPayload).then(() => {
-          router.push('/');
+          router.push(`/pet/${petId}`);
         });
       });
     }
@@ -47,11 +47,11 @@ function MedForm({ obj }) {
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Add'} Medication</h2>
 
-      {/* CONDITION NAME INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Condition Name" className="mb-3">
+      {/* MEDICATION NAME INPUT  */}
+      <FloatingLabel controlId="floatingInput1" label="Medication Name" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter name of condition"
+          placeholder="Enter name of medication"
           name="name"
           value={formInput.name}
           onChange={handleChange}
@@ -70,6 +70,7 @@ MedForm.propTypes = {
     name: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
+  petId: PropTypes.string.isRequired,
 };
 
 MedForm.defaultProps = {

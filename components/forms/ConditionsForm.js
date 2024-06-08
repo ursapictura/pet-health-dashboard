@@ -11,7 +11,7 @@ const initialState = {
   name: '',
 };
 
-function ConditionForm({ obj }) {
+function ConditionForm({ petId, obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
@@ -33,11 +33,11 @@ function ConditionForm({ obj }) {
     if (obj.firebaseKey) {
       updateCondition(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, petId };
       createCondition(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateCondition(patchPayload).then(() => {
-          router.push('/');
+          router.push(`/pet/${petId}`);
         });
       });
     }
@@ -70,6 +70,7 @@ ConditionForm.propTypes = {
     name: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
+  petId: PropTypes.string.isRequired,
 };
 
 ConditionForm.defaultProps = {
