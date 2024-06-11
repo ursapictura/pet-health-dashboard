@@ -4,12 +4,13 @@ import MedRow from './MedRow';
 export default function MedTable({ meds, onUpdate }) {
   return (
     <div className="overflow-x-auto">
+      <h2 className="title">Current Medications</h2>
       <table className="table table-xs">
         <thead>
 
           <tr>
+            <th>Medications</th>
             <th aria-label="text" />
-            <th>Medication</th>
           </tr>
         </thead>
         <tbody>

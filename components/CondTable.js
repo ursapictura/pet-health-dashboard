@@ -4,12 +4,12 @@ import CondRow from './CondRow';
 export default function CondTable({ conditions, onUpdate }) {
   return (
     <div className="overflow-x-auto">
+      <h2 className="title">Medical Conditions</h2>
       <table className="table table-xs">
         <thead>
-
           <tr>
-            <th aria-label="text" />
             <th>Conditions</th>
+            <th aria-label="text" />
           </tr>
         </thead>
         <tbody>

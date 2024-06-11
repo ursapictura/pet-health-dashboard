@@ -12,6 +12,8 @@ import { getAllMeds } from '../../api/medData';
 import MedTable from '../../components/MedTable';
 import { getAllConditions } from '../../api/conData';
 import CondTable from '../../components/CondTable';
+import { getAllVisits } from '../../api/visitData';
+import VisitTable from '../../components/VisitTable';
 
 export default function PetDashboard() {
   const router = useRouter();
@@ -21,6 +23,7 @@ export default function PetDashboard() {
   const [vets, setVets] = useState([]);
   const [meds, setMeds] = useState([]);
   const [conditions, setConditions] = useState([]);
+  const [visits, setVisits] = useState([]);
 
   const { firebaseKey } = router.query;
 
@@ -41,11 +44,16 @@ export default function PetDashboard() {
     getAllConditions(firebaseKey).then(setConditions);
   };
 
+  const getPetVisits = () => {
+    getAllVisits(firebaseKey).then(setVisits);
+  };
+
   useEffect(() => {
     getPet();
     getPrimaryVet();
     GetPetMeds();
     GetPetConditions();
+    getPetVisits();
   }, [firebaseKey, user.uid]);
 
   return (
@@ -79,6 +87,10 @@ export default function PetDashboard() {
       <div>
         {conditions.length > 0 ? (<CondTable conditions={conditions} onUpdate={GetPetConditions} />) : ''}
       </div>
+      <div>
+        {visits.length > 0 ? (<VisitTable visits={visits} onUpdate={getPetVisits} />) : ''}
+      </div>
+
       <div className="btn-container">
         <Link
           href={`/med/new/${pet.firebaseKey}`}
@@ -90,8 +102,9 @@ export default function PetDashboard() {
             textAlign: 'center',
           }}
         >
-          <button type="submit" className="btn btn-primary">Add Medication</button>
+          <button type="submit" className="btn btn-primary">Add New Medication</button>
         </Link>
+
         <Link
           href={`/condition/new/${pet.firebaseKey}`}
           passHref
@@ -102,7 +115,20 @@ export default function PetDashboard() {
             textAlign: 'center',
           }}
         >
-          <button type="submit" className="btn btn-primary">Add Condition</button>
+          <button type="submit" className="btn btn-primary">Add New Condition</button>
+        </Link>
+
+        <Link
+          href={`/visit/new/${pet.firebaseKey}`}
+          passHref
+          style={{
+            display: 'block',
+            width: '125px',
+            margin: 'auto',
+            textAlign: 'center',
+          }}
+        >
+          <button type="submit" className="btn btn-primary">Add Vet Visit</button>
         </Link>
       </div>
     </div>

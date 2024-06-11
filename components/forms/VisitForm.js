@@ -8,16 +8,16 @@ import { useAuth } from '../../utils/context/authContext';
 import { createVisit, updateVisit } from '../../api/visitData';
 
 const initialState = {
-  vet: '',
+  reason: '',
   date: '',
-  tests: '',
+  vet: '',
   diagnosis: '',
   medications: '',
+  tests: '',
   vaccinations: false,
-  image: '',
 };
 
-function VisitForm({ obj }) {
+function VisitForm({ petId, obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
@@ -39,11 +39,11 @@ function VisitForm({ obj }) {
     if (obj.firebaseKey) {
       updateVisit(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, petId };
       createVisit(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateVisit(patchPayload).then(() => {
-          router.push('/');
+          router.push(`/pet/${petId}`);
         });
       });
     }
@@ -51,25 +51,37 @@ function VisitForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Add'} Vet Visit</h2>
+      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Add'} Visit</h2>
 
-      {/* VET NAME INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Vet Name" className="mb-3">
+      {/* VISIT REASON INPUT  */}
+      <FloatingLabel controlId="floatingInput1" label="Reason for Visit" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter vet's name"
-          name="name"
-          value={formInput.name}
+          placeholder="Describe reason for vet visit"
+          name="reason"
+          value={formInput.reason}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      {/* DATE INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="date" className="mb-3">
+      {/* VET NAME INPUT  */}
+      <FloatingLabel controlId="floatingInput2" label="Vet's Name" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Name of vet"
+          name="vet"
+          value={formInput.vet}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+
+      {/* DATE OF VISIT INPUT  */}
+      <FloatingLabel controlId="floatingInput3" label="Date of Visit" className="mb-3">
         <Form.Control
           type="date"
-          placeholder="Date of visit"
+          placeholder="Enter date of vet visit"
           name="date"
           value={formInput.date}
           onChange={handleChange}
@@ -77,25 +89,11 @@ function VisitForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* TESTS INPUT  */}
-      <FloatingLabel controlId="floatingInput3" label="Tests Performed" className="mb-3">
+      {/* DIAGNOSIS INPUT */}
+      <FloatingLabel controlId="floatingInput5" label="Diagnosis" className="mb-3">
         <Form.Control
-          type="textarea"
-          placeholder="Enter tests performed"
-          style={{ height: '100px' }}
-          name="tests"
-          value={formInput.tests}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      {/* DIAGNOSIS INPUT  */}
-      <FloatingLabel controlId="floatingTextarea" label="diagnosis" className="mb-3">
-        <Form.Control
-          as="textarea"
-          placeholder="Vet diagnosis"
-          style={{ height: '100px' }}
+          type="text"
+          placeholder="Diagnosis"
           name="diagnosis"
           value={formInput.diagnosis}
           onChange={handleChange}
@@ -103,44 +101,43 @@ function VisitForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* MEDICATIONS INPUT  */}
-      <FloatingLabel controlId="floatingInput4" label="Meds prescribed" className="mb-3">
+      {/* MEDICATION INPUT  */}
+      <FloatingLabel controlId="floatingInput6" label="Medications Prescribed" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Medications prescribed"
-          name="email"
+          placeholder="Medications Prescribed"
+          name="medications"
           value={formInput.medications}
           onChange={handleChange}
         />
       </FloatingLabel>
 
-      {/* PET VACCINATIONS BOOLEAN */}
+      {/* TESTS INPUT  */}
+      <FloatingLabel controlId="floatingInput7" label="Tests Performed" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Tests Performed"
+          name="tests"
+          value={formInput.tests}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
+
+      {/* VACCINATIONS BOOLEAN */}
       <Form.Check
         className="mb-3"
         type="switch"
-        id="vaccines"
-        name="vaccines"
-        label="Vaccinations?"
+        id="vaccinations"
+        name="vaccinations"
+        label="Annual Vaccinations?"
         checked={formInput.vaccinations}
         onChange={(e) => {
           setFormInput((prevState) => ({
             ...prevState,
-            fixed: e.target.checked,
+            vaccinations: e.target.checked,
           }));
         }}
       />
-
-      {/* RECEIPT IMAGE INPUT  */}
-      <FloatingLabel controlId="floatingInput5" label="Receipt Image" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Enter an image url"
-          name="image"
-          value={formInput.image}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Add'} Visit</Button>
@@ -150,15 +147,16 @@ function VisitForm({ obj }) {
 
 VisitForm.propTypes = {
   obj: PropTypes.shape({
+    name: PropTypes.string,
+    date: PropTypes.string,
     vet: PropTypes.string,
-    date: PropTypes.instanceOf(Date),
-    tests: PropTypes.string,
     diagnosis: PropTypes.string,
     medications: PropTypes.string,
+    tests: PropTypes.string,
     vaccinations: PropTypes.bool,
-    image: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
+  petId: PropTypes.string.isRequired,
 };
 
 VisitForm.defaultProps = {
