@@ -23,24 +23,24 @@ export default function ViewVisit() {
   }, [firebaseKey]);
 
   return (
-    <>
+    <div className="visit-card">
       <h1>Visit Date: {visit.date}</h1>
       <h2>Reason: {visit.reason}</h2>
       <h2>Diagnosis: {visit.diagnosis}</h2>
-      <h3>Vet: {visit.vet}</h3>
+      <h2>Vet: {visit.vet}</h2>
       <div>
-        {visit.medications !== '' > 0 ? <h3>Medications Prescribed: {visit.medications}</h3> : ''}
+        {visit.medications !== '' > 0 ? <><h3>Medications Prescribed:</h3><h3>{visit.medications}</h3></> : ''}
       </div>
       <div>
-        {visit.test !== '' ? <h3>Tests Performed: {visit.tests}</h3> : ''}
+        {visit.test !== '' ? <><h3>Tests Performed:</h3><h3>{visit.tests}</h3></> : ''}
       </div>
-      <h3> Vaccinations Administered? {visit.vaccinations}</h3>
+      <h3> Vaccinations Administered? {visit.vaccinations ? 'Yes' : 'No' }</h3>
       <a href={`/visit/edit/${firebaseKey}`}>
         <button type="submit" className="btn btn-outline btn-secondary">EDIT</button>
       </a>
       <button type="submit" className="btn btn-outline btn-accent" onClick={removeThisVisit}>
         REMOVE
       </button>
-    </>
+    </div>
   );
 }

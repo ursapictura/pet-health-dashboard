@@ -61,10 +61,16 @@ export default function PetDashboard() {
       <div className="pet-dashboard-card">
         <PetCard key={firebaseKey} petObj={pet} onUpdate={getPet} location="dashboard" />
       </div>
+
+      <div className="visit-container">
+        {visits.length > 0 ? (<VisitTable visits={visits} onUpdate={getPetVisits} />) : ''}
+      </div>
+
       <div className="chart">
         <WeightChart weights={weights} />
         <WeightForm obj={firebaseKey} setWeights={setWeights} />
       </div>
+
       <div className="vet-card">
         {vets.length > 0 ? (vets.map((vet) => (<VetCard key={vet.firebaseKey} vetObj={vet} />))) : (
           <Link
@@ -81,55 +87,58 @@ export default function PetDashboard() {
           </Link>
         )}
       </div>
-      <div>
-        {meds.length > 0 ? (<MedTable meds={meds} onUpdate={GetPetMeds} />) : ''}
-      </div>
-      <div>
-        {conditions.length > 0 ? (<CondTable conditions={conditions} onUpdate={GetPetConditions} />) : ''}
-      </div>
-      <div>
-        {visits.length > 0 ? (<VisitTable visits={visits} onUpdate={getPetVisits} />) : ''}
-      </div>
 
-      <div className="btn-container">
-        <Link
-          href={`/med/new/${pet.firebaseKey}`}
-          passHref
-          style={{
-            display: 'block',
-            width: '125px',
-            margin: 'auto',
-            textAlign: 'center',
-          }}
-        >
-          <button type="submit" className="btn btn-primary">Add New Medication</button>
-        </Link>
+      <div className="med-con-btn">
+        <div className="tables-container">
+          <div className="med-container">
+            {meds.length > 0 ? (<MedTable meds={meds} onUpdate={GetPetMeds} />) : ''}
+          </div>
 
-        <Link
-          href={`/condition/new/${pet.firebaseKey}`}
-          passHref
-          style={{
-            display: 'block',
-            width: '125px',
-            margin: 'auto',
-            textAlign: 'center',
-          }}
-        >
-          <button type="submit" className="btn btn-primary">Add New Condition</button>
-        </Link>
+          <div className="condition-container">
+            {conditions.length > 0 ? (<CondTable conditions={conditions} onUpdate={GetPetConditions} />) : ''}
+          </div>
+        </div>
 
-        <Link
-          href={`/visit/new/${pet.firebaseKey}`}
-          passHref
-          style={{
-            display: 'block',
-            width: '125px',
-            margin: 'auto',
-            textAlign: 'center',
-          }}
-        >
-          <button type="submit" className="btn btn-primary">Add Vet Visit</button>
-        </Link>
+        <div className="btn-container dashboard-btn">
+          <Link
+            href={`/med/new/${pet.firebaseKey}`}
+            passHref
+            style={{
+              display: 'block',
+              width: '125px',
+              margin: 'auto',
+              textAlign: 'center',
+            }}
+          >
+            <button type="submit" className="btn btn-primary">Add New Medication</button>
+          </Link>
+
+          <Link
+            href={`/condition/new/${pet.firebaseKey}`}
+            passHref
+            style={{
+              display: 'block',
+              width: '125px',
+              margin: 'auto',
+              textAlign: 'center',
+            }}
+          >
+            <button type="submit" className="btn btn-primary">Add New Condition</button>
+          </Link>
+
+          <Link
+            href={`/visit/new/${pet.firebaseKey}`}
+            passHref
+            style={{
+              display: 'block',
+              width: '125px',
+              margin: 'auto',
+              textAlign: 'center',
+            }}
+          >
+            <button type="submit" className="btn btn-primary">Add Vet Visit</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

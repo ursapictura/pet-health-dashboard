@@ -10,7 +10,7 @@ export default function PetCard({ petObj, onUpdate, location }) {
   };
 
   return (
-    <div className="card w-96 glass pet-card">
+    <div className="card w-93 glass pet-card">
       <figure className="px-10 pt-10"><img src={petObj.image} alt={petObj.name} /></figure>
       <div className="card-body">
         <h2 className="card-title">{petObj.name}</h2>
