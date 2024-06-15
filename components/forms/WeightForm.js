@@ -41,7 +41,7 @@ function WeightForm({ obj, setWeights }) {
     <Form className="weight-form" onSubmit={handleSubmit}>
 
       {/* PET NAME INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Pet Weight" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Pet Weight" className="mb-3 weight-input">
         <Form.Control
           type="number"
           placeholder="Enter pet's weight"

@@ -58,9 +58,22 @@ const updateWeight = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/weight/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
   getAllWeights,
   getSingleWeight,
   createWeight,
   updateWeight,
+  deleteSingleWeight,
 };

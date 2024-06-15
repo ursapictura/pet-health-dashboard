@@ -85,6 +85,7 @@ export default function WeightChart({ weights }) {
 
   return (
     <div className="chart-container">
+      <h2 className="title">Weight Overtime</h2>
       {weights.length > 0 ? (
         <canvas ref={chartRef} id="myChart" />
       ) : (

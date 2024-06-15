@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import { PropTypes } from 'prop-types';
-import { deletePet } from '../api/petData';
+import deletePetData from '../api/mergeData';
 
 export default function PetCard({ petObj, onUpdate, location }) {
-  const removeThisPet = () => {
+  const deleteThisPet = () => {
     if (window.confirm(`Remove ${petObj.name} from app?`)) {
-      deletePet(petObj.firebaseKey).then(() => onUpdate());
+      deletePetData(petObj.firebaseKey).then(() => onUpdate());
     }
   };
 
   return (
-    <div className="card w-96 glass pet-card">
+    <div className="card w-93 glass pet-card">
       <figure className="px-10 pt-10"><img src={petObj.image} alt={petObj.name} /></figure>
       <div className="card-body">
         <h2 className="card-title">{petObj.name}</h2>
@@ -32,7 +32,7 @@ export default function PetCard({ petObj, onUpdate, location }) {
           <a href={`/pet/edit/${petObj.firebaseKey}`}>
             <button type="submit" className="btn btn-outline btn-secondary">EDIT</button>
           </a>
-          <button type="submit" className="btn btn-outline btn-accent" onClick={removeThisPet}>
+          <button type="submit" className="btn btn-outline btn-accent" onClick={deleteThisPet}>
             REMOVE
           </button>
         </div>

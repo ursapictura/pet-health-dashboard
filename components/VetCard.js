@@ -5,8 +5,8 @@ import { PropTypes } from 'prop-types';
 
 export default function VetCard({ vetObj }) {
   return (
-    <div className="card w-96 glass vet-card">
-      {console.warn(vetObj.firebaseKey)}
+    <div className="card w-94 glass vet-card">
+      <h2 className="title">Primary Vet</h2>
       <figure className="px-10 pt-10"><img src={vetObj.image} alt={vetObj.name} /></figure>
       <div className="card-body">
         <h2 className="card-title">{vetObj.name}</h2>
