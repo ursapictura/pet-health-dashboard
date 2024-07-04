@@ -63,7 +63,22 @@ export default function PetDashboard() {
       </div>
 
       <div className="visit-container">
-        {visits.length > 0 ? (<VisitTable visits={visits} onUpdate={getPetVisits} />) : ''}
+        {visits.length > 0
+          ? (<VisitTable visits={visits} onUpdate={getPetVisits} />)
+          : (
+            <Link
+              href={`/visit/new/${pet.firebaseKey}`}
+              passHref
+              style={{
+                display: 'flex',
+                width: '125px',
+                margin: 'auto',
+                textAlign: 'center',
+              }}
+            >
+              <button type="submit" className="btn btn-primary">Add Vet Visit</button>
+            </Link>
+          )}
       </div>
 
       <div className="chart">
@@ -91,11 +106,41 @@ export default function PetDashboard() {
       <div className="med-con-btn">
         <div className="tables-container">
           <div className="med-container">
-            {meds.length > 0 ? (<MedTable meds={meds} onUpdate={GetPetMeds} />) : ''}
+            {meds.length > 0
+              ? (<MedTable meds={meds} onUpdate={GetPetMeds} />)
+              : (
+                <Link
+                  href={`/med/new/${pet.firebaseKey}`}
+                  passHref
+                  style={{
+                    display: 'block',
+                    width: '125px',
+                    margin: 'auto',
+                    textAlign: 'center',
+                  }}
+                >
+                  <button type="submit" className="btn btn-primary">Add New Medication</button>
+                </Link>
+              )}
           </div>
 
           <div className="condition-container">
-            {conditions.length > 0 ? (<CondTable conditions={conditions} onUpdate={GetPetConditions} />) : ''}
+            {conditions.length > 0
+              ? (<CondTable conditions={conditions} onUpdate={GetPetConditions} />)
+              : (
+                <Link
+                  href={`/condition/new/${pet.firebaseKey}`}
+                  passHref
+                  style={{
+                    display: 'block',
+                    width: '125px',
+                    margin: 'auto',
+                    textAlign: 'center',
+                  }}
+                >
+                  <button type="submit" className="btn btn-primary">Add New Condition</button>
+                </Link>
+              )}
           </div>
         </div>
 
