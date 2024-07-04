@@ -2,8 +2,8 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getAllWeights = (petId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight.json?orderBy="petId"&equalTo="${petId}"`, {
+const getAllMeds = (petId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/medications.json?orderBy="petId"&equalTo="${petId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -20,8 +20,8 @@ const getAllWeights = (petId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight/${firebaseKey}.json`, {
+const getSingleMed = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/medications/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -32,8 +32,8 @@ const getSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createWeight = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight.json`, {
+const createMed = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/medications.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -45,8 +45,8 @@ const createWeight = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateWeight = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight/${payload.firebaseKey}.json`, {
+const updateMed = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/medications/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -58,8 +58,8 @@ const updateWeight = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight/${firebaseKey}.json`, {
+const deleteMed = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/medications/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -71,9 +71,9 @@ const deleteSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  getAllWeights,
-  getSingleWeight,
-  createWeight,
-  updateWeight,
-  deleteSingleWeight,
+  getAllMeds,
+  getSingleMed,
+  createMed,
+  updateMed,
+  deleteMed,
 };

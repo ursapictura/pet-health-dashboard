@@ -2,8 +2,8 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getAllWeights = (petId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight.json?orderBy="petId"&equalTo="${petId}"`, {
+const getAllConditions = (petId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/conditions.json?orderBy="petId"&equalTo="${petId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -20,8 +20,8 @@ const getAllWeights = (petId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight/${firebaseKey}.json`, {
+const getSingleCondition = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/conditions/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -32,8 +32,8 @@ const getSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createWeight = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight.json`, {
+const createCondition = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/conditions.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -45,8 +45,8 @@ const createWeight = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateWeight = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight/${payload.firebaseKey}.json`, {
+const updateCondition = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/conditions/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -58,8 +58,8 @@ const updateWeight = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight/${firebaseKey}.json`, {
+const deleteCondition = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/conditions/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -71,9 +71,9 @@ const deleteSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  getAllWeights,
-  getSingleWeight,
-  createWeight,
-  updateWeight,
-  deleteSingleWeight,
+  getAllConditions,
+  getSingleCondition,
+  createCondition,
+  updateCondition,
+  deleteCondition,
 };

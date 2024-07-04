@@ -2,8 +2,8 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getAllWeights = (petId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight.json?orderBy="petId"&equalTo="${petId}"`, {
+const getUserVet = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vet.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -20,8 +20,8 @@ const getAllWeights = (petId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight/${firebaseKey}.json`, {
+const getSingleVet = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vet/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -32,8 +32,8 @@ const getSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createWeight = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight.json`, {
+const createVet = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vet.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -45,8 +45,8 @@ const createWeight = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateWeight = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight/${payload.firebaseKey}.json`, {
+const updateVet = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vet/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -58,22 +58,9 @@ const updateWeight = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteSingleWeight = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/weight/${firebaseKey}.json`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .then(resolve)
-    .catch(reject);
-});
-
 export {
-  getAllWeights,
-  getSingleWeight,
-  createWeight,
-  updateWeight,
-  deleteSingleWeight,
+  getUserVet,
+  getSingleVet,
+  createVet,
+  updateVet,
 };
