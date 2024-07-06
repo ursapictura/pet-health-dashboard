@@ -23,7 +23,7 @@
 
 
 ## Features
-- view each's pet's health metrics at once in the convenient pet dashboard
+- view each pet's health metrics at once in the convenient pet dashboard
 - add, edit, and remove pets
 - add, edit, and delete each pet's medications
 - add, edit, and delete each pet's health conditions
