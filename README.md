@@ -40,8 +40,10 @@
 - Daisy UI
 
 
+## Pets View
 <img alt="screenshot of pets view" width="1675" src="https://github.com/ursapictura/pet-health-dashboard/assets/104770521/3ccec3f4-fb52-4b60-9006-99b248f699b1">
 
+## Health Dashboard View
 <img alt="screenshot of pet dashboard" width="1673" src="https://github.com/ursapictura/pet-health-dashboard/assets/104770521/263ec269-6f93-48cf-b77c-9d0b3f28648c">
 
 <img alt="screenshot of pet dashboard bottom view" width="1673" src="https://github.com/ursapictura/pet-health-dashboard/assets/104770521/739d4a2f-c09e-477e-a647-f65f610f2df9">
