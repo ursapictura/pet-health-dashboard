@@ -15,11 +15,11 @@
 
 
 ## Project Overview
-
+Pet COmpanion is an all--inclusive dashboard to track the health of your pet or pets. Each user can add as many animals as they would like to the application. After you've added your pet, you can beginning filling out their health details, such as medications, medical conditions, recent vet visits, weekly or monthly wiehgt chages, and more. Each user can also add their primary vet's contact details for easy reference in an emergency. 
 
 
 ## User and Problem Being Solved
-
+Currently, most pet owners do not have a digital way to reference their pet's health information. Most veterinarians provided print documents at the end of each vet visit, and owners are tasked with keeping and organizing this documents. Referring back to these documents is cumbersome and time intensive, Pet Companion creates a better way to monitor the health and wellbeing of your pets in an easy, quick-refernce dashboard. 
 
 
 ## Features
