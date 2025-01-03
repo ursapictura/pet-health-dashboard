@@ -10,7 +10,7 @@
 
 [Project Board](https://github.com/users/ursapictura/projects/4)
 
-[Video Demo]()
+[Video Demo](https://www.loom.com/share/f716e01a6c1a4a5faeec10012fc45a8a?sid=a95d5a7c-2d94-434b-8289-d15e4a289d82)
 
 
 
